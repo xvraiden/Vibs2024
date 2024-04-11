@@ -24,10 +24,10 @@ t_stop = 0.05; % Seconds
 
 % Define initial conditions Part 1 a-c
 
-initial_displacement = [0.023, 0, 0]; % Meters
-initial_velocity = [0, 0, -3.2]; % Meters/Second
-initial_charge = [0, 0, 0]; % Coulombs
-initial_current = [0, -4.1, 4.7]; % Amps
+initial_displacement = [0.023, 0, 0];
+initial_velocity = [0, 0, 2.0, 2.5, 3.0];
+initial_charge = 0;
+initial_current =
 
 L1 = length(angular_disp1);
 L2 = length(angular_disp2);
