@@ -59,16 +59,19 @@ function prob_2dofNL
 %
 % Important other related ODE functions: odeset;
 global NLflg
+
 % Define time range.
 t_start = 0;
 t_stop = 20;
 t0 = [t_start ; t_stop];
+
 % Define initial conditions.
 x_vel = 0;
 x_disp = 0.075; % meters
 theta_vel = 0;
 theta_disp = 0.01; % radians
 y0 = [x_vel ; theta_vel ; x_disp; theta_disp];
+
 %Assume default tolerance of 1.e-3; % Accuracy
 % Non-linear solution
 NLflg = 1;
@@ -82,6 +85,7 @@ subplot(212), plot(t,y(:,4))
 title(['2DOF time history (exact EOM) [IC ' num2str(theta_disp) ' rad | ' num2str(theta_vel) ' rad/s]'])
 xlabel('Time [sec]');
 ylabel('Displacement [rad]');
+
 %Assume default tolerance of 1.e-3; % Accuracy
 % Linear solution
 NLflg = 0;
@@ -96,6 +100,7 @@ title(['2DOF time history (linear EOM) [IC ' num2str(theta_disp) ' rad | '
 num2str(theta_vel) ' rad/s]'])
 xlabel('Time [sec]');
 ylabel('Displacement [rad]');
+
 %-----------------------------------------
 Final Project 5 04-Apr-2024
 MECH-3080 (2024SS)
