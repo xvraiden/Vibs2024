@@ -9,7 +9,7 @@ I0 = [0, -4.1, 4.7];
 t0 = [0 ; 0.05];
 
 for i = 1:length(v0)
-    hybrid_system_2dof(t0, x0(i), v0(i), q0(i), I0(i), i, 1);
+    hybrid_system_2dof(t0, x0(i), v0(i), q0(i), I0(i), i, 1, 1);
 end
 
 % Part 2
@@ -21,6 +21,8 @@ I0 = 0;
 t0 = [0, 0, 1.6, 3.2; 8, 0.8, 2.4, 4];
 [m,n] = size(t0);
 
-for i = 1:m
-    hybrid_system_2dof(t0(:,i), x0, v0, q0, I0, i, 2);
+for j = 1:m
+    for i = 1:n
+        hybrid_system_2dof(t0(:,j), x0, v0, q0, I0, i, j, 2);
+    end
 end
