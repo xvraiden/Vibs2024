@@ -46,6 +46,3 @@ frequency_response_plot(f,H,'FRF Plots')
 
 
 
-
-
-
