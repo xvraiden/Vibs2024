@@ -1,7 +1,7 @@
-function [t1,y1] = ODE_2nd_Order_NL(t_start, t_stop, y_disp, y_vel, mass, damp, stiff, force)
+function [t1,y1,t2,y2] = ODE_2nd_Order_NL(t_start, t_stop, y_disp, y_vel, mass, damp, stiff, force)
 
 % Define time range.
-t0 = [t_start ; t_stop];
+t0 = [t_start ; t_stop]
 
 % Define initial conditions.
 y0 = [y_vel ; y_disp];
@@ -10,7 +10,7 @@ y0 = [y_vel ; y_disp];
 
 % Assume default tolerance of 1.e-3; % odeset option: RelTol
 [t1,y1] = ode23(@sdof_linear,t0,y0);
-%[t2,y2] = ode23(@sdof_sin,t0,y0);
+[t2,y2] = ode23(@sdof_sin,t0,y0);
 
     function ydot = sdof_linear(t, y)
         xdot = y(1);
