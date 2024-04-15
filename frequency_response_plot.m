@@ -11,7 +11,7 @@ function frequency_response_plot(f,H,name)
     
     subplot(2, 2, 3)
     semilogy(f,abs(H(1,1)),f,abs(H(1,2)),f,abs(H(2,1)),f,abs(H(2,2)),'markerSize',10);
-    title('Magnitude', 'FontSize', 18);frequency
+    title('Magnitude', 'FontSize', 18);
     xlabel('Frequency (Hertz)', 'FontSize', 16);
     ylabel('Magnitude (Vout/Vin)', 'FontSize', 16);
     legend("x/F", "q/F", "x/V", "q/V");
