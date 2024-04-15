@@ -21,19 +21,17 @@ w = f.*2.*pi;
 
 FRF = @(w) inv(-w.^2.*[m,0;0,L] + 1i.*w.*[damping,-B;B,R] + [k,0;0,1./c]);
 
-TR = @(w) inv(([damping,0;0,B] + [k,0;0,0]) * FRF(w));
+TR = @(w) ([damping,0;0,B] + [k,0;0,0]) * FRF(w);
 
 for z = 1:size(w,2)
-    A = FRF(w(z));
-    H(1,1,z) = A(1,1);
-    H(1,2,z) = A(1,2);
-    H(2,1,z) = A(2,1);
-    H(2,2,z) = A(2,2);
+    TR(w(z))
+    A = TR(w(z));
+    H(z) = abs(A);
 end
 
 
 
-frequency_response_plot(f,H,'FRF Plots')
+force_transmissibility_plot(f,H,'TR Plots')
 
 
 

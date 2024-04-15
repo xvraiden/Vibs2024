@@ -19,7 +19,9 @@ w = f.*2.*pi;
 
 
 
-FRF = @(w)inv(-w.^2.*[m,0;0,L] + 1i.*w.*[damping,-B;B,R] + [k,0;0,1./c]);
+FRF = @(w) inv(-w.^2.*[m,0;0,L] + 1i.*w.*[damping,-B;B,R] + [k,0;0,1./c]);
+
+TR = @(w) inv(([damping,0;0,B] + [k,0;0,0]) * )
 
 for z = 1:size(w,2)
     A = FRF(w(z));
