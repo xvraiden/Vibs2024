@@ -66,7 +66,7 @@ function ydot = ndof(t,y)
     end
     
     xdotdot = (force - k.*x - c.*xdot + qdot.*B)./m;
-    qdotdot = (voltage - q./C - R.*qdot - xdot.*B)./m;
+    qdotdot = (voltage - q./C - R.*qdot - xdot.*B)./L;
     
     ydot = [xdotdot; qdotdot; xdot; qdot];
 end
