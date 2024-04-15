@@ -1,4 +1,5 @@
 function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current)
+    global force_type
     y0 = [x_vel ; current ; x_disp; charge];
     
     [t,y] = ode23(@ndof,t0,y0);
@@ -8,6 +9,8 @@ end
 function ydot = ndof(t,y)
     global prob_num
     global j
+    global z
+    global force_type
 
     m = 0.031; % kg
     c = 7.2; % N*s/m
@@ -27,10 +30,11 @@ function ydot = ndof(t,y)
         case 1
             force = 0;
             voltage = 0;
+            force_type = 'Static';
         case 2
             omega = 29*2*pi;
             force = 0;
-
+            force_type = 'Static';
             switch j
                 case 1
                     voltage = 4.2.*sin(omega.*t.^2);
@@ -39,16 +43,29 @@ function ydot = ndof(t,y)
             end
 
         case 3
-            force = 0;
-
             switch j
                 case 1
-                    omega = 220*2*pi;
+                    omega = 110*2*pi;
                 case 2
+                    omega = 220*2*pi;
+                case 3
                     omega = 30*2*pi;
             end
 
             voltage = 4.5.*sin(omega.^2);
+            
+            switch z
+                case 1
+                    force = 0;
+                    force_type = 'Static';
+                case 2
+                    if sin(omega.*t) >= 0
+                        force = sin(omega.*t);
+                    else
+                        force = 0;
+                    end
+                force_type = 'Half Cycle Pulse';
+            end
     end
     
     xdotdot = (force - k.*x - c.*xdot + qdot.*B)./m;

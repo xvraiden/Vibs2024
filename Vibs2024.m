@@ -28,7 +28,7 @@ global j
 
 for j = 1:m
     for i = 1:n
-        hybrid_system_2dof(t0(:,j), x0, v0, q0, I0);
+        hybrid_system_2dof(t0(:,i), x0, v0, q0, I0);
     end
 end
 
@@ -43,9 +43,12 @@ t0 = [0, 0.98; 8, 1.08];
 [m,n] = size(t0);
 
 global j
+global z
 
-for j = 1:m
-    for i = 1:n
-        hybrid_system_2dof(t0(:,j), x0, v0, q0, I0);
+for z = 1:m
+    for j = 1:m
+        for i = 1:n
+            hybrid_system_2dof(t0(:,i), x0, v0, q0, I0);
+        end
     end
 end
