@@ -1,6 +1,4 @@
 function force_transmissibility_plot(f,TR,name)
-    % Changing Masss
-    figure ('Name', 'Base Reaction Response Transmissibility'); 
     sgtitle(name,'FontSize', 18);
 
     subplot(2, 1, 1)
