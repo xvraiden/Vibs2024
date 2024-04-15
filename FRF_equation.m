@@ -14,8 +14,8 @@ k = k*1000;
 L = L/1000;
 c = c*10^-6;
 
-w = 0:10:300;
-w = w.*2.*pi;
+f = 0:10:300;
+w = f.*2.*pi;
 
 
 
@@ -30,6 +30,8 @@ for z = 1:size(w,2)
 end
 
 
+
+frequency_response_plot(f,H,'FRF Plots')
 
 
 
