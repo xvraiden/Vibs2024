@@ -1,6 +1,7 @@
 function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current)
     global force_type
-    y0 = [x_vel ; current ; x_disp; charge];
+  
+    y0 = [x_vel; current; x_disp; charge];
     
     [t,y] = ode23(@ndof,t0,y0);
     time_domain_plots(t, y, x_vel, x_disp, current, charge)
@@ -11,7 +12,7 @@ function ydot = ndof(t,y)
     global j
     global z
     global force_type
-
+    
     m = 0.031; % kg
     c = 7.2; % N*s/m
     k = 16.5*10^3; % N/m

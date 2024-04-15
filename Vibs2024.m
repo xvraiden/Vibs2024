@@ -1,4 +1,6 @@
 clc; clear; close all;
+global f
+global t
 
 % Part 1
 global prob_num
