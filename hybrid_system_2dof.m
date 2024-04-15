@@ -59,12 +59,14 @@ function ydot = ndof(t,y)
                     force = 0;
                     force_type = 'Static';
                 case 2
-                    if sin(omega.*t) >= 0
-                        force = sin(omega.*t);
-                    else
-                        force = 0;
-                    end
-                force_type = 'Half Cycle Pulse';
+                    force = sin(omega.*t);
+                    force(force<0) = 0;
+%                     if sin(omega.*t) >= 0
+%                         force = sin(omega.*t);
+%                     else
+%                         force = 0;
+%                     end
+                    force_type = 'Half Cycle Pulse';
             end
     end
     
