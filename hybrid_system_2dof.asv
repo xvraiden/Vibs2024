@@ -1,4 +1,4 @@
-function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current, iter1, iter2, prob_num)
+function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current)
 
     y0 = [x_vel ; current ; x_disp; charge];
     
@@ -16,7 +16,12 @@ function ydot = ndof(t,y)
     C = 75*10^-6; % Farads
     B = 6.2; % Weber / m
 
-    switch (prob_num)
+    xdot = y(1);
+    qdot = y(2);
+    x = y(3);
+    q = y(4);
+
+    switch prob_num
         case 1
             force = 0;
             voltage = 0;
@@ -33,19 +38,16 @@ function ydot = ndof(t,y)
 
         case 3
             force = 0;
-            switch iter2
+
+            switch j
                 case 1
                     omega = 220*2*pi;
                 case 2
                     omega = 30*2*pi;
             end
 
-            voltage = 4.5.*sin()
-    
-    xdot = y(1);
-    qdot = y(2);
-    x = y(3);
-    q = y(4);
+            voltage = 4.5.*sin(omega.^2);
+    end
     
     xdotdot = (force - k.*x - c.*xdot + qdot.*B)./m;
     qdotdot = (voltage - q./C - R.*qdot - xdot.*B)./m;

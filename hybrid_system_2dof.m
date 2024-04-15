@@ -1,11 +1,13 @@
-function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current, iter1, iter2, prob_num)
-
+function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current)
     y0 = [x_vel ; current ; x_disp; charge];
     
     [t,y] = ode23(@ndof,t0,y0);
     time_domain_plots(t, y, x_vel, x_disp, current, charge)
+end
 
 function ydot = ndof(t,y)
+    global prob_num
+    global j
 
     m = 0.031; % kg
     c = 7.2; % N*s/m
@@ -29,7 +31,7 @@ function ydot = ndof(t,y)
             omega = 29*2*pi;
             force = 0;
 
-            switch iter2
+            switch j
                 case 1
                     voltage = 4.2.*sin(omega.*t.^2);
                 case 2
@@ -38,7 +40,8 @@ function ydot = ndof(t,y)
 
         case 3
             force = 0;
-            switch iter2
+
+            switch j
                 case 1
                     omega = 220*2*pi;
                 case 2
@@ -52,3 +55,4 @@ function ydot = ndof(t,y)
     qdotdot = (voltage - q./C - R.*qdot - xdot.*B)./m;
     
     ydot = [xdotdot; qdotdot; xdot; qdot];
+end
