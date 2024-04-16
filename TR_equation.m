@@ -24,7 +24,7 @@ FRF = @(w) inv(-w.^2.*[m,0;0,L] + 1i.*w.*[damping,-B;B,R] + [k,0;0,1./c]);
 for z = 1:size(w,2)
     A = FRF(w(z));
 
-    TR = (1i.*w.*damping + k).*A(1,1) + 1i.*w.*B.*A(2,2);
+    TR = (1i.*w(z).*damping + k).*A(1,2) + 1i.*w(z).*B.*A(2,2);
 
     H(z) = TR;
 end
