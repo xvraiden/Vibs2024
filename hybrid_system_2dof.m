@@ -53,17 +53,21 @@ function ydot = ndof(t,y)
                     omega = 30*2*pi;
             end
 
-            voltage = 4.5.*sin(omega.^2);
+            %voltage = 4.5.*sin(omega.^2);
+
+            voltage = half_cycle_pulse(t, omega, 1);
+
+            force = 0;
             
-            switch z
-                case 1
-                    force = 0;
-                    force_type = 'Static';
-                case 2
-                    force = sin(omega.*t);
-                    force(force<0) = 0;
-                    force_type = 'Half Cycle Pulse';
-            end
+            %switch z
+                %case 1
+                    %force = 0;
+                    %force_type = 'Static';
+                %case 2
+                    %force = sin(omega.*t);
+                    %force(force<0) = 0;
+                    %force_type = 'Half Cycle Pulse';
+            %end
     end
     
     xdotdot = (force - k.*x - c.*xdot + qdot.*B)./m;
