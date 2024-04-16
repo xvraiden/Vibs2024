@@ -8,7 +8,7 @@ function force_transmissibility_plot(f,TR,name)
     ylabel('Phase Angle (Degrees)', 'FontSize', 16);
 
     subplot(2, 1, 2)
-    plot(f,abs(TR),'markerSize',10);
+    semilogy(f,abs(TR),'markerSize',10);
     title('Magnitude', 'FontSize', 18);
     xlabel('Frequency (Hertz)', 'FontSize', 16);
     ylabel('Magnitude (N/V)', 'FontSize', 16);
