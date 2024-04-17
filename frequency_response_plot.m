@@ -19,20 +19,20 @@ function frequency_response_plot(f,H,name)
     semilogy(f,abs(H11),f,abs(H12),f,abs(H21),f,abs(H22),'markerSize',10);
     title('Magnitude', 'FontSize', 18);
     xlabel('Frequency (Hertz)', 'FontSize', 16);
-    ylabel('Magnitude (Vout/Vin)', 'FontSize', 16);
+    ylabel('Magnitude (m/N | m/V | C/N | C/V)', 'FontSize', 16);
     legend("x/F", "q/F", "x/V", "q/V");
     
     subplot(2, 2, 2)
     plot(f,imag(H11),f,imag(H12),f,imag(H21),f,imag(H22),'markerSize',10);
     title('Imaginary', 'FontSize', 18);
     xlabel('Frequency (Hertz)', 'FontSize', 16);
-    ylabel('Imaginary (Vout / Vin)', 'FontSize', 16);
+    ylabel('Imaginary (m/N | m/V | C/N | C/V)', 'FontSize', 16);
     legend("x/F", "q/F", "x/V", "q/V");
     
     subplot(2, 2, 4)
     plot(f,real(H11),f,real(H12),f,real(H21),f,real(H22),'markerSize',10);
     title('Real', 'FontSize', 18);
     xlabel('Frequency (Hertz)', 'FontSize', 16);
-    ylabel('Real (Vout/Vin)', 'FontSize', 16);
+    ylabel('Real (m/N | m/V | C/N | C/V)', 'FontSize', 16);
     legend("x/F", "q/F", "x/V", "q/V");
 end
