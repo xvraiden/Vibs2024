@@ -1,13 +1,13 @@
 function time_domain_plots(t, y, x_vel, x_disp, current, charge)
     global prob_num
-    global force_type
+    global omega_pass
     
     figure('Name', 'Displacement and Charge vs Time Problem')
-    sgtitle(num2str(prob_num),'FontSize', 18);
+    sgtitle(['Problem: ' num2str(prob_num) ' Force and Voltage Input Frequency: ' num2str(omega_pass./(2*pi)) ' Hz'],'FontSize', 18);
     
     subplot(2, 2, 2)
     plot(t,y(:,1))
-    title(['Time Response [IC ' num2str(x_vel) ' m | ' num2str(x_vel) 'm/s] Force Type: ' num2str(force_type)])
+    title(['Time Response [IC ' num2str(x_vel) ' m | ' num2str(x_vel) 'm/s]'])
     xlabel('Time [sec]');
     ylabel('Velocity [m/sec]');
     
@@ -19,7 +19,7 @@ function time_domain_plots(t, y, x_vel, x_disp, current, charge)
     
     subplot(2, 2, 1)
     plot(t,y(:,3))
-    title(['Time Response [IC ' num2str(x_disp) ' m | ' num2str(x_vel) 'm/s] Force Type: ' num2str(force_type)])
+    title(['Time Response [IC ' num2str(x_disp) ' m | ' num2str(x_vel) 'm/s]'])
     xlabel('Time [sec]');
     ylabel('Displacement [m]');
     
