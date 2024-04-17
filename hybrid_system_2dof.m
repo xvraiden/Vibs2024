@@ -2,8 +2,9 @@ function hybrid_systems_2dof(t0, x_disp, x_vel, charge, current)
     global force_type
   
     y0 = [x_vel; current; x_disp; charge];
-    
-    [t,y] = ode23(@ndof,t0,y0);
+
+    options = odeset("MaxStep",0.01,"InitialStep",1e-3);
+    [t,y] = ode23(@ndof,t0,y0,options);
     time_domain_plots(t, y, x_vel, x_disp, current, charge)
 end
 
@@ -52,8 +53,6 @@ function ydot = ndof(t,y)
                 case 3
                     omega = 30*2*pi;
             end
-
-            %voltage = 4.5.*sin(omega.^2);
 
             voltage = half_cycle_pulse(t, omega, 1);
 
