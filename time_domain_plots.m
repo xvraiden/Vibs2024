@@ -7,7 +7,7 @@ function time_domain_plots(t, y, x_vel, x_disp, current, charge)
     
     subplot(2, 2, 2)
     plot(t,y(:,1))
-    title(['Time Response [IC ' num2str(x_vel) ' m | ' num2str(x_vel) 'm/s]'])
+    title(['Time Response [IC ' num2str(x_disp) ' m | ' num2str(x_vel) 'm/s]'])
     xlabel('Time [sec]');
     ylabel('Velocity [m/sec]');
     

@@ -1,4 +1,5 @@
 function force_transmissibility_plot(f,TR,name)
+    figure('Name', 'Force Transmissibility');
     sgtitle(name,'FontSize', 18);
 
     subplot(2, 1, 1)
