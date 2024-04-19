@@ -3,7 +3,12 @@ function time_domain_plots(t, y, x_vel, x_disp, current, charge)
     global omega_pass
     
     figure('Name', 'Displacement and Charge vs Time Problem')
-    sgtitle(['Problem: ' num2str(prob_num) ' Force and Voltage Input Frequency: ' num2str(omega_pass./(2*pi)) ' Hz'],'FontSize', 18);
+
+    if (prob_num == 2)
+        sgtitle(['Problem: ' num2str(prob_num) ' Force and Voltage Input Frequency: ' num2str(omega_pass./(2*pi)) ' Hz/s'],'FontSize', 18);
+    else
+        sgtitle(['Problem: ' num2str(prob_num) ' Force and Voltage Input Frequency: ' num2str(omega_pass./(2*pi)) ' Hz'],'FontSize', 18);
+    end
     
     subplot(2, 2, 2)
     plot(t,y(:,1))
