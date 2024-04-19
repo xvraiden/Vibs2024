@@ -13,7 +13,7 @@ function time_domain_plots(t, y, x_vel, x_disp, current, charge)
     
     subplot(2, 2, 4)
     plot(t,y(:,2))
-    title(['Time Response [IC ' num2str(current) ' coulombs | ' num2str(current) ' amps]'])
+    title(['Time Response [IC ' num2str(charge) ' coulombs | ' num2str(current) ' amps]'])
     xlabel('Time [sec]');
     ylabel('Current [amps]');
     
